@@ -77,15 +77,5 @@
             @yield('content')
         </main>
     </div>
-    <script src="{{ asset('assets/js/vendors/jquery-3.2.1.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vendors/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
-
-    <script>
-        $(function(e) {
-            $('#datatable').DataTable();
-        } );
-    </script>
 </body>
 </html>

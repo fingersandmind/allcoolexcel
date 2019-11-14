@@ -98,14 +98,65 @@
     <div class="row row-cards">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Company profit</h3>
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="excel" class="form-control @error('excel') is-invalid @enderror"> Import Excel File <br>
+                        @error('excel')
+                            <code class="text-danger">{{ $message }}</code>
+                        @enderror
+                        <br>
+
+                        <button class="btn btn-warning btn-sm" type="submit">Submit</button>
+                        <a href="{{ route('destroy') }}" onclick="return confirm('Are you really really sure you want to delete all of the records?');" class="btn btn-danger btn-sm">DESSSTTTRRROOOOYYY</a>
+                    </form>
                 </div>
                 <div class="card-body">
-                    <div class="chart-container">
-                        <canvas  id="lineChart"></canvas>
+                    <div class="col-md-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Basic Table</h3>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Brand</th>
+                                            <th>Type</th>
+                                            <th>Model</th>
+                                            <th>Description</th>
+                                            <th>Cap</th>
+                                            <th>SRP</th>
+                                            <th>COST</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($lists as $list)
+                                        <tr>
+                                            <td scope="row">{{ $list->id }}</td>
+                                            <th scope="row">{{ $list->brand }}</th>
+                                            <th scope="row">{{ $list->type }}</th>
+                                            <th scope="row">{{ $list->model }}</th>
+                                            <th scope="row">{{ $list->description }}</th>
+                                            <th scope="row">{{ $list->cap }}</th>
+                                            <th scope="row">{{ $list->srp }}</th>
+                                            <th scope="row">{{ $list->cost }}</th>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- table-responsive -->
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -430,3 +481,18 @@
 </div>
 {{-- @include('partials.modal') --}}
 @endsection
+
+@push('additionalCSS')
+    <link href="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+@endpush
+
+@push('additionalJS')
+    <script src="{{ asset('assets/plugins/datatable/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
+
+    <script>
+        $(function(e) {
+            $('#datatable').DataTable();
+        } );
+    </script>
+@endpush

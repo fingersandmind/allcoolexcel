@@ -18,13 +18,15 @@ class AirconListController extends Controller
     {
         $lists = AirconList::get();
 
-        return view('home', compact('lists'));
+        return view('pages.dashboard', compact('lists'));
     }
 
     public function import(Request $request)
     {
-        // dd($request->file('excel'));
+        $request->validate([
+            'excel' => 'required|max:50000|mimes:xlsx'
+        ]);
         Excel::import(new AirconListImport, request()->file('excel'));
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 }

@@ -20,9 +20,7 @@ use App\AirconList;
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/', function(){
-        return view('pages.dashboard');
-    })->name('dashboard');
+    Route::get('/', 'AirconListController@index')->name('dashboard');
 
     Route::resource('transactions', 'TransactionController');
     Route::post('transaction', 'TransactionController@createTransaction')->name('transac.create');
@@ -37,6 +35,5 @@ Route::post('uploading-data', 'AirconListController@import')->name('upload');
 
 Route::get('delete-records', function(){
     AirconList::truncate();
-
-    return response()->json(['success' => 'Successfully deleted!']);
-});
+    return redirect()->route('dashboard')->withSuccess('Records Deleted Successfully');
+})->name('destroy');
