@@ -30,7 +30,7 @@
                                 <h3 class="card-title">Basic Table</h3>
                             </div>
                             <div class="table-responsive">
-                                <table id="datatable" class="table card-table table-vcenter text-nowrap">
+                                <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -68,16 +68,3 @@
     </div>
 </div>
 @endsection
-@push('additionalCSS')
-<link href="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
-@endpush
-@push('additionalJS')
-<script src="{{ asset('assets/plugins/datatable/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datatable/dataTables.bootstrap4.min.js') }}"></script>
-
-<script>
-    $(function(e) {
-        $('#datatable').DataTable();
-    } );
-</script>
-@endpush
