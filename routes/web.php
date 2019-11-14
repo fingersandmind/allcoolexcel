@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('items', 'ItemController');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'AirconListController@index')->name('home');
 
 Route::get('lists', 'AirconListController@data');
 

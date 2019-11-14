@@ -20,8 +20,8 @@ class CreateAirconListsTable extends Migration
             $table->string('model');
             $table->string('description');
             $table->string('cap');
-            $table->float('srp',8,2)->nullable();
-            $table->float('cost',8,2)->nullable();
+            $table->string('srp');
+            $table->string('cost');
             $table->timestamps();
         });
     }

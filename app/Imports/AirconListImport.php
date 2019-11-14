@@ -5,8 +5,9 @@ namespace App\Imports;
 use App\AirconList;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 
-class AirconListImport implements ToModel, WithStartRow
+class AirconListImport implements ToModel, WithStartRow, WithCalculatedFormulas
 {
     /**
     * @param array $row
@@ -25,8 +26,8 @@ class AirconListImport implements ToModel, WithStartRow
                     'model' => (string)$row[2],
                     'description' => (string)$row[3],
                     'cap' => (string)$row[4],
-                    'srp' => floatval(str_replace(',','',$row[5])),
-                    'cost' => floatval(str_replace(',','',$row[6])),
+                    'srp' => (string)$row[5],
+                    'cost' => (string)$row[6],
                 ]);
             }
         }
