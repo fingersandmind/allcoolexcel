@@ -15,6 +15,13 @@
                     @endif
 
                     You are logged in!
+                    <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="excel"> Import Excel File <br>
+                        <br>
+
+                        <button class="btn btn-warning btn-sm" type="submit">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>

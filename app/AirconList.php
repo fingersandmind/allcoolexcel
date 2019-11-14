@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AirconList extends Model
 {
-    protected $table = 'aircon_list';
+    protected $fillable = ['brand', 'type', 'model', 'description', 'cap', 'srp', 'cost'];
+    
+    protected $table = 'aircon_lists';
 }
