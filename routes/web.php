@@ -14,6 +14,9 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+use App\AirconList;
+
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
@@ -31,3 +34,9 @@ Route::get('home', 'AirconListController@index')->name('home');
 Route::get('lists', 'AirconListController@data');
 
 Route::post('uploading-data', 'AirconListController@import')->name('upload');
+
+Route::get('delete-records', function(){
+    AirconList::truncate();
+
+    return response()->json(['success' => 'Successfully deleted!']);
+});
