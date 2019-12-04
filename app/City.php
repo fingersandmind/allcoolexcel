@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use EloquentFilter\Filterable;
-use App\ModelFilters\ProvinceFilter;
+use App\ModelFilters\CityFilter;
 
 class City extends Model
 {
