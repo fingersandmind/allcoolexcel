@@ -18,11 +18,11 @@ use Illuminate\Http\Request;
 // });
 
 
-Route::resource('regions', 'Api\RegionsController')->only('index', 'show');
-Route::resource('provinces', 'Api\ProvincesController')->only('index', 'show');
-Route::resource('cities', 'Api\CitiesController')->only('index', 'show');
-Route::resource('barangays', 'Api\BarangaysController')->only('index', 'show');
+    Route::resource('regions', 'Api\RegionsController')->only('index', 'show');
+    Route::resource('provinces', 'Api\ProvincesController')->only('index', 'show');
+    Route::resource('cities', 'Api\CitiesController')->only('index', 'show');
+    Route::resource('barangays', 'Api\BarangaysController')->only('index', 'show');
 
-Route::get('gma-provinces', 'Api\ProvincesController@gmaProvince');
-Route::get('province-cities', 'Api\CitiesController@cities');
-Route::get('city-barangays', 'Api\BarangaysController@barangays');
+    Route::get('gma-provinces', 'Api\ProvincesController@gmaProvince');
+    Route::get('province-cities', 'Api\CitiesController@cities');
+    Route::get('city-barangays', 'Api\BarangaysController@barangays');

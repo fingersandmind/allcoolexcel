@@ -164,6 +164,7 @@ return [
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         EloquentFilter\ServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
 
 
         /*
