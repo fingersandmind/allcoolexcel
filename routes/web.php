@@ -33,6 +33,8 @@ Route::get('lists', 'AirconListController@data');
 
 Route::post('uploading-data', 'AirconListController@import')->name('upload');
 
+Route::post('upload-region', 'PhilippineRegProvMunCitController@upload')->name('upload.data');
+
 Route::get('delete-records', function(){
     AirconList::truncate();
     return redirect()->route('dashboard')->withSuccess('Records Deleted Successfully');

@@ -165,6 +165,43 @@
                 <div class="card-header">
                     <h3 class="card-title">Cart  Details</h3>
                 </div>
+                <div class="card-body">
+                    <form action="{{ route('upload.data') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="region" class="form-control">Upload Region Data</label>
+                            <input type="file" id="region" name="region" class="form-control @error('region') is-invalid @enderror">
+                            @error('region')
+                                <code class="text-danger">{{ $message }}</code>
+                            @enderror
+                            <br>
+
+                            <label for="province" class="form-control">Upload Province Data</label>
+                            <input type="file" id="province" name="province" class="form-control @error('province') is-invalid @enderror">
+                            @error('province')
+                                <code class="text-danger">{{ $message }}</code>
+                            @enderror
+                            <br>
+
+                            <label for="city" class="form-control">Upload City Data</label>
+                            <input type="file" id="city" name="city" class="form-control @error('city') is-invalid @enderror">
+                            @error('city')
+                                <code class="text-danger">{{ $message }}</code>
+                            @enderror
+                            <br>
+
+                            <label for="baranggay" class="form-control">Upload Brgy Data</label>
+                            <input type="file" id="baranggay" name="baranggay" class="form-control @error('baranggay') is-invalid @enderror">
+                            @error('baranggay')
+                                <code class="text-danger">{{ $message }}</code>
+                            @enderror
+                            <br>
+                        </div>
+
+                        <button class="btn btn-warning btn-sm" type="submit">Submit</button>
+                        
+                    </form>
+                </div>
                 <div class="text-center">
                     <div class="">
                         <div class="table_style table-responsive">
@@ -306,172 +343,6 @@
                                 </tbody>
                             </table>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-    <div class="row row-cards row-deck">
-        
-        <div class="col-sm-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">Sales</div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col text-center">
-                            <label class="tx-12">Today</label>
-                            <p class="font-weight-semibold">3,256</p>
-                        </div><!-- col -->
-                        <div class="col border-left text-center">
-                            <label class="tx-12">This Week</label>
-                            <p class="font-weight-semibold">25,321</p>
-                        </div><!-- col -->
-                        <div class="col border-left text-center">
-                            <label class="tx-12">This Month</label>
-                            <p class="font-weight-semibold">53,625</p>
-                        </div><!-- col -->
-                    </div><!-- row -->
-
-                <div class="progress mt-4">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" style="width: 50%">50%</div>
-                </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">Profit</div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col text-center">
-                            <label class="tx-12">Today</label>
-                            <p class="font-weight-semibold">236 $</p>
-                        </div><!-- col -->
-                        <div class="col border-left text-center ">
-                            <label class="tx-12">This Week</label>
-                            <p class="font-weight-semibold">1,365 $</p>
-                        </div><!-- col -->
-                        <div class="col border-left text-center">
-                            <label class="tx-12">This Month</label>
-                            <p class="font-weight-semibold">36,254 $</p>
-                        </div><!-- col -->
-                    </div><!-- row -->
-
-                <div class="progress mt-4">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" style="width: 35%">35%</div>
-                </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row row-cards">
-        <div class="col-lg-3 col-md-6 col-sm-12 m-b-3">
-            <div class="card">
-                <div class="">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="facebook p-4 br-tl-7 br-tr-7">
-                                <div class="text-center text-white social">
-                                    <i class="fa fa-facebook"></i>
-                                </div>
-                            </div>
-                            <div class="card-body mt-0">
-                                <div class="d-flex  align-items-center">
-                                    <div><h3 class="font-medium">16k</h3>
-                                        <h5 class="text-muted mb-0">Following</h5>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <h3 class="font-medium">1k</h3>
-                                        <h5 class="text-muted mb-0">Friends</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 m-b-3">
-            <div class="card">
-                <div class="">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="twitter p-4 br-tl-7 br-tr-7">
-                                <div class="text-center text-white social">
-                                    <i class="fa fa-twitter"></i>
-                                </div>
-                            </div>
-                            <div class="card-body mt-0">
-                                <div class="d-flex  align-items-center">
-                                    <div><h3 class="font-medium">46k</h3>
-                                        <h5 class="text-muted mb-0">Following</h5>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <h3 class="font-medium">40k</h3>
-                                        <h5 class="text-muted mb-0">Friends</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 m-b-3">
-            <div class="card">
-                <div class="">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="linkedin p-4 br-tl-7 br-tr-7">
-                                <div class="text-center text-white social">
-                                    <i class="fa fa-linkedin"></i>
-                                </div>
-                            </div>
-                            <div class="card-body mt-0">
-                                <div class="d-flex  align-items-center">
-                                    <div><h3 class="font-medium">41k</h3>
-                                        <h5 class="text-muted mb-0">Following</h5>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <h3 class="font-medium">21k</h3>
-                                        <h5 class="text-muted mb-0">Friends</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 m-b-3">
-            <div class="card">
-                <div class="">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="instagram p-4 br-tl-7 br-tr-7">
-                                <div class="text-center text-white social">
-                                    <i class="fa fa-instagram"></i>
-                                </div>
-                            </div>
-                            <div class="card-body mt-0">
-                                <div class="d-flex  align-items-center">
-                                    <div><h3 class="font-medium">21k</h3>
-                                        <h5 class="text-muted mb-0">Following</h5>
-                                    </div>
-                                    <div class="ml-auto">
-                                        <h3 class="font-medium">23k</h3>
-                                        <h5 class="text-muted mb-0">Friends</h5>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
