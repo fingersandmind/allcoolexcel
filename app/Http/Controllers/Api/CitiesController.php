@@ -27,10 +27,11 @@ class CitiesController extends Controller
     public function cities(Request $request)
     {
         $cities = City::where('province_id', $request->province_id)
-        ->with(['baranggays', 'province'])
-        ->paginate(15);
+        ->pluck('cityDesc', 'id');
 
-        return new CitiesResource($cities);
+        return $cities;
+
+        // return new CitiesResource($cities);
     }
 
     /**

@@ -38,9 +38,10 @@ class BarangaysController extends Controller
     public function barangays(Request $request)
     {
         $brgys = Baranggay::where('city_id', $request->city_id)
-        ->with(['city', 'province'])
-        ->paginate(15);
+        ->pluck('brgyDesc', 'id');
 
-        return new BarangaysResource($brgys);
+        return $brgys;
+
+        // return new BarangaysResource($brgys);
     }
 }

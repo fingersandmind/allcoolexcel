@@ -140,7 +140,7 @@ class PhilippineRegProvMunCitController extends Controller
     {
         $response = $this->response($jsonFile);
         $datas = [];
-        ini_set('max_execution_time', 120 );
+        ini_set('max_execution_time', 420 );
         foreach($response as $data)
         {
             $brgy = new Baranggay();
