@@ -34,9 +34,9 @@ class ProvincesController extends Controller
         return new ProvinceResource($province);
     }
 
-    public function gmaProvince()
+    public function provinceRadius()
     {
-        $provCodes = ['0410', '0421', '0314', '0354', '0434', '0458'];
+        $provCodes = ['0410', '0421', '0314', '0354', '0434', '0458','1339', '1374','1375','1376'];
 
         $gmaProvinces = Province::whereIn('provCode',$provCodes)
         ->pluck('provDesc', 'id');

@@ -23,6 +23,6 @@ use Illuminate\Http\Request;
     Route::resource('cities', 'Api\CitiesController')->only('index', 'show');
     Route::resource('barangays', 'Api\BarangaysController')->only('index', 'show');
 
-    Route::get('gma-provinces', 'Api\ProvincesController@gmaProvince');
+    Route::get('province-radius', 'Api\ProvincesController@provinceRadius');
     Route::get('province-cities', 'Api\CitiesController@cities');
     Route::get('city-barangays', 'Api\BarangaysController@barangays');
