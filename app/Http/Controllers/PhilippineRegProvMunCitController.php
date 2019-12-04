@@ -6,6 +6,7 @@ use App\Baranggay;
 use App\City;
 use App\Province;
 use App\Region;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PhilippineRegProvMunCitController extends Controller
@@ -139,30 +140,30 @@ class PhilippineRegProvMunCitController extends Controller
     public function baranggay($jsonFile)
     {
         $response = $this->response($jsonFile);
-        $datas = [];
-        ini_set('max_execution_time', 420 );
+        $datas = collect();
+        ini_set('max_execution_time', 120 );
+        $timestamp = Carbon::now();
         foreach($response as $data)
         {
             $brgy = new Baranggay();
             if(!$this->checkIfRecordExists($brgy, $data['brgyCode']))
             {
-                $brgy->create([
+                $datas->push([
                     'city_id' => $this->cityArr()[$data['citymunCode']],
                     'province_id' => $this->provinceArr()[$data['provCode']],
                     'psgcCode' => $data['brgyCode'],
                     'brgyDesc' => $data['brgyDesc'],
                     'provCode' => $data['provCode'],
-                    'cityCode' => $data['citymunCode']
+                    'cityCode' => $data['citymunCode'],
+                    'updated_at' => $timestamp,
+                    'created_at' => $timestamp,
                 ]);
             }
-            // $collection = collect($datas);
-            // $chunks = $collection->chunk(500);
             
-            // foreach($chunks as $chunk)
-            // {
-            //     $array = $chunk->toArray();
-            //     $brgy->create($array[0]);
-            // }
+            foreach($datas->chunk(1000) as $data)
+            {
+                DB::table('baranggays')->insert($data->toArray());
+            }
             
         }
         return response()->json(['Yay! Success kayo!']);
