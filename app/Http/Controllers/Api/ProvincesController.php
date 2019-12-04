@@ -40,8 +40,16 @@ class ProvincesController extends Controller
 
         $gmaProvinces = Province::whereIn('provCode',$provCodes)
         ->pluck('provDesc', 'id');
-        
-        return $gmaProvinces;
+        $datas = array();
+
+        foreach($gmaProvinces as $key => $value)
+        {
+            $data['id'] = $key;
+            $data['value'] = $value;
+            array_push($datas, $data);
+        }
+
+        return $datas;
 
         // return new ProvincesResource($gmaProvinces);
     }

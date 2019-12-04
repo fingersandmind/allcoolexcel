@@ -29,7 +29,16 @@ class CitiesController extends Controller
         $cities = City::where('province_id', $request->province_id)
         ->pluck('cityDesc', 'id');
 
-        return $cities;
+        $datas = array();
+
+        foreach($cities as $key => $value)
+        {
+            $data['id'] = $key;
+            $data['value'] = $value;
+            array_push($datas, $data);
+        }
+
+        return $datas;
 
         // return new CitiesResource($cities);
     }

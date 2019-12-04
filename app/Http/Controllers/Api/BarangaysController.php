@@ -39,8 +39,16 @@ class BarangaysController extends Controller
     {
         $brgys = Baranggay::where('city_id', $request->city_id)
         ->pluck('brgyDesc', 'id');
+        $datas = array();
 
-        return $brgys;
+        foreach($brgys as $key => $value)
+        {
+            $data['id'] = $key;
+            $data['value'] = $value;
+            array_push($datas, $data);
+        }
+
+        return $datas;
 
         // return new BarangaysResource($brgys);
     }
