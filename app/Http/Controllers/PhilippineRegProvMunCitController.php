@@ -23,15 +23,15 @@ class PhilippineRegProvMunCitController extends Controller
         {
             return $this->region($request->region);
         }
-        if($request->province)
+        elseif($request->province)
         {
             return $this->province($request->province);
         }
-        if($request->city)
+        elseif($request->city)
         {
             return $this->city($request->city);
         }
-        if($request->baranggay)
+        elseif($request->baranggay)
         {
             return $this->baranggay($request->baranggay);
         }
