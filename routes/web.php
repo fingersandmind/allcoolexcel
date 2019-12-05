@@ -25,17 +25,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('transactions', 'TransactionController');
     Route::post('transaction', 'TransactionController@createTransaction')->name('transac.create');
     Route::resource('items', 'ItemController');
+
+
+    Route::get('home', 'AirconListController@index')->name('home');
+
+    Route::get('lists', 'AirconListController@data');
+
+    Route::post('uploading-data', 'AirconListController@import')->name('upload');
+
+    Route::post('upload-data', 'PhilippineRegProvMunCitController@upload')->name('upload.data');
+
+    Route::get('delete-records', function(){
+        AirconList::truncate();
+        return redirect()->route('dashboard')->withSuccess('Records Deleted Successfully');
+    })->name('destroy');
 });
-
-Route::get('home', 'AirconListController@index')->name('home');
-
-Route::get('lists', 'AirconListController@data');
-
-Route::post('uploading-data', 'AirconListController@import')->name('upload');
-
-Route::post('upload-data', 'PhilippineRegProvMunCitController@upload')->name('upload.data');
-
-Route::get('delete-records', function(){
-    AirconList::truncate();
-    return redirect()->route('dashboard')->withSuccess('Records Deleted Successfully');
-})->name('destroy');
