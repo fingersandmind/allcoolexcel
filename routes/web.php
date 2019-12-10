@@ -29,8 +29,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('home', 'AirconListController@index')->name('home');
 
-    Route::get('lists', 'AirconListController@data');
-
     Route::post('uploading-data', 'AirconListController@import')->name('upload');
 
     Route::post('upload-data', 'PhilippineRegProvMunCitController@upload')->name('upload.data');
@@ -40,3 +38,5 @@ Route::group(['middleware' => ['auth']], function () {
         return redirect()->route('dashboard')->withSuccess('Records Deleted Successfully');
     })->name('destroy');
 });
+
+Route::get('lists', 'AirconListController@data');
